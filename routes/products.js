@@ -5,10 +5,10 @@ var Product = require('../models/Product.js')
 
 /* GET ALL PRODUCTS */
 router.get('/', function (req, res) {
-  console.log("entered '/reservations' route..")
+  console.log("entered '.../products/' route..")
   Product.find({}, function (err, products) {
     if (err) res.json({ err: err })
-    res.json(products)
+    res.json({ res: products })
   })
 })
 
