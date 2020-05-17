@@ -34,6 +34,7 @@ app.use(function (req, res, next) {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: "true" }));
+app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use("/products", productsRouter);
 
