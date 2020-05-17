@@ -3,6 +3,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+var cors = require("cors");
 var user = process.env.DB_USER;
 var pass = process.env.DB_PASS;
 var dbUrl =
