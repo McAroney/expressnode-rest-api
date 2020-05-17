@@ -20,8 +20,6 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use("/products", productsRouter);
 
-mongoose.Promise = global.Promise;
-
 mongoose
 	.connect(dbUrl, {
 		useNewUrlParser: true,
