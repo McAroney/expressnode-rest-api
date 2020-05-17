@@ -7,7 +7,7 @@ var urlencode = require("urlencode");
 var user = process.env.DB_USER;
 var pass = process.env.DB_PASS;
 var dbUrl =
-	"mongodb://" + user + ":" + pass + "@ds155699.mlab.com:55699/products";
+	"mongodb://" + user + ":" + pass + "\u0040ds155699.mlab.com:55699/products";
 
 var productsRouter = require("./routes/products");
 
