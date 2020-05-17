@@ -10,7 +10,6 @@ var pass = process.env.DB_PASS;
 var dbUrl =
 	"mongodb://" + user + ":" + pass + "@ds155699.mlab.com:55699/products";
 var productsRouter = require("./routes/products");
-var usersRouter = require("./routes/users");
 
 var app = express();
 
@@ -19,8 +18,7 @@ mongoose.Promise = global.Promise;
 mongoose
 	.connect(dbUrl, {
 		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useMongoClient: true
+		useUnifiedTopology: true
 	})
 	.then(() => console.log("connection succesful"))
 	.catch((err) => console.error(err));
