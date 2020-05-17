@@ -33,6 +33,7 @@ app.use(function (req, res, next) {
 	next();
 });
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: "true" }));
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
