@@ -3,18 +3,12 @@ var router = express.Router();
 var mongoose = require("mongoose");
 var Product = require("../models/Product.js");
 
-/* GET ALL PRODUCTS 
-router.get("/", function (req, res) {
-	console.log("entered '.../products/' route..");
-	console.log(req);
-	Product.find({}, function (err, products) {
-		if (err) res.json({ err: err });
-		res.json({ products: products });
+/* GET ALL PRODUCTS */
+router.get("/", function (req, res, next) {
+	Product.find(function (err, products) {
+		if (err) return next(err);
+		res.json(products);
 	});
-});
-*/
-router.get("/", function (req, res) {
-	res.json({ joko: "toimii" });
 });
 
 /* GET SINGLE PRODUCT BY ID */
