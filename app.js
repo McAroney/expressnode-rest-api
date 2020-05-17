@@ -1,34 +1,33 @@
-var createError = require('http-errors')
-var express = require('express')
-var path = require('path')
-var cookieParser = require('cookie-parser')
-var logger = require('morgan')
-var mongoose = require('mongoose')
-var bodyParser = require('body-parser')
-var user = process.env.DB_USER
-var pass = process.env.DB_PASS
+var createError = require("http-errors");
+var express = require("express");
+var path = require("path");
+var cookieParser = require("cookie-parser");
+var logger = require("morgan");
+var mongoose = require("mongoose");
+var bodyParser = require("body-parser");
+var user = process.env.DB_USER;
+var pass = process.env.DB_PASS;
+var dbUrl =
+	"mongodb://" + user + ":" + pass + "@ds155699.mlab.com:55699/products";
+var productsRouter = require("./routes/products");
+var usersRouter = require("./routes/users");
 
-var productsRouter = require('./routes/products')
-var usersRouter = require('./routes/users')
+var app = express();
 
-var app = express()
-
-mongoose.Promise = global.Promise
+mongoose.Promise = global.Promise;
 
 mongoose
-  .connect(
-    'mongodb://' + user + ':' + pass + '@ds155699.mlab.com:55699/products',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    }
-  )
-  .then(() => console.log('connection succesful'))
-  .catch(err => console.error(err))
+	.connect(dbUrl, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useMongoClient: true
+	})
+	.then(() => console.log("connection succesful"))
+	.catch((err) => console.error(err));
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: 'true' }))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: "true" }));
 
-app.use('/products', productsRouter)
+app.use("/products", productsRouter);
 
-module.exports = app
+module.exports = app;
